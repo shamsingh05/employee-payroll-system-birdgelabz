@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Payroll Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Employee Payroll System</h1>
+
+<a href="/add">Add Employee</a>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Basic Salary</th>
+        <th>Tax (12%)</th>
+        <th>Net Salary</th>
+        <th>Actions</th>
+
+    </tr>
+
+    <% employees.forEach(emp => { %>
+        <% 
+            const tax = emp.salary * 0.12;
+            const net = emp.salary - tax;
+        %>
+        <tr>
+            <td><%= emp.id %></td>
+            <td><%= emp.name %></td>
+            <td><%= emp.department %></td>
+            <td><%= emp.salary %></td>
+            <td><%= tax.toFixed(2) %></td>
+            <td><%= net.toFixed(2) %></td>
+            <td>
+                <a href="/delete/<%= emp.id %>" onclick="return confirm('Delete this employee?')">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+    <% }) %>
+
+</table>
+
+</body>
+</html>
