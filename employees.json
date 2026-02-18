@@ -10,5 +10,23 @@
     "name": "Rajat",
     "department": "Development",
     "salary": 50000
+  },
+  {
+    "id": 1003,
+    "name": "Rajat Tripathi",
+    "department": "IT",
+    "salary": 50000
+  },
+  {
+    "id": 1004,
+    "name": "Shambhavi Singh",
+    "department": "Development",
+    "salary": 60000
+  },
+  {
+    "id": 1005,
+    "name": "Ishita Ranjan",
+    "department": "Legal",
+    "salary": 55000
   }
 ]

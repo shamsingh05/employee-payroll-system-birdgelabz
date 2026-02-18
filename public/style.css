@@ -27,13 +27,24 @@ td, th{
 
 a{
     display: block;
-    width: 150px;
+    width: 100px;
     margin: 20px auto;
     text-align: center;
     padding: 10px;
     background: #27ae60;
     color: white;
     text-decoration: none;
+    border-radius: 6px;
+}
+.del-edit{
+    display: flex;
+    flex-direction: row;
+    width: 50px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background: #27ae60;
+    color: white;
     border-radius: 6px;
 }
 
