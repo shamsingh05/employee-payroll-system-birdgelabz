@@ -61,6 +61,37 @@ app.get("/delete/:id",async (req,res)=>{
   res.redirect("/");
 });
 
+app.get("/edit/:id", async (req,res)=>{
+  const id = Number(req.params.id);
+
+  const employees = await readEmployees();
+
+  const employee = employees.find(emp => emp.id === id);
+
+  res.render("edit", { employee });
+})
+
+app.post("/edit/:id", async (req, res) => {
+
+  const id = Number(req.params.id);
+  const { name, department, salary } = req.body;
+
+  let employees = await readEmployees();
+
+  const index = employees.findIndex(emp => emp.id === id);
+
+  if (index !== -1) {
+    employees[index].name = name;
+    employees[index].department = department;
+    employees[index].salary = Number(salary);
+  }
+
+  await writeEmployees(employees);
+
+  res.redirect("/");
+});
+
+
 app.listen(PORT, async () => {
   console.log(`Server running on http://localhost:${PORT}`);
 

@@ -35,10 +35,10 @@
             <td><%= tax.toFixed(2) %></td>
             <td><%= net.toFixed(2) %></td>
             <td>
-                <a href="/delete/<%= emp.id %>" onclick="return confirm('Delete this employee?')">
-                    Delete
-                </a>
+                <a href="/edit/<%= emp.id %>">Edit</a> |
+                <a href="/delete/<%= emp.id %>" onclick="return confirm('Delete this employee?')">Delete</a>
             </td>
+
 
         </tr>
     <% }) %>
