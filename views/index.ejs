@@ -7,6 +7,46 @@
 <body>
 
 <h1>Employee Payroll System</h1>
+<form method="GET" action="/" style="text-align:center; margin-bottom:20px;">
+    <input type="text" name="search" placeholder="Search by name or department" value="<%= search || '' %>">
+    <button type="submit">Search</button>
+    <a href="/">Clear</a>
+</form>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Employees</h3>
+        <p><%= totalEmployees %></p>
+    </div>
+
+    <div class="card">
+        <h3>Departments</h3>
+        <p><%= totalDepartments %></p>
+    </div>
+
+    <div class="card">
+        <h3>Total Basic Salary</h3>
+        <p>₹ <%= totalBasicSalary.toFixed(2) %></p>
+    </div>
+
+    <div class="card">
+        <h3>Total Tax</h3>
+        <p>₹ <%= totalTax.toFixed(2) %></p>
+    </div>
+
+    <div class="card">
+        <h3>Total Net Salary</h3>
+        <p>₹ <%= totalNetSalary.toFixed(2) %></p>
+    </div>
+
+    <div class="card">
+        <h3>Average Salary</h3>
+        <p>₹ <%= avgSalary.toFixed(2) %></p>
+    </div>
+
+</div>
+
 
 <a href="/add">Add Employee</a>
 

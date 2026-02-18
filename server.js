@@ -15,9 +15,43 @@ app.use(express.urlencoded({ extended: true }));
 // })
 
 app.get("/", async (req, res) => {
-  const employees = await readEmployees();
-  res.render("index", { employees });
+
+  let employees = await readEmployees();
+
+  const search = req.query.search;
+
+  if (search) {
+    employees = employees.filter(emp =>
+      emp.name.toLowerCase().includes(search.toLowerCase()) ||
+      emp.department.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  const totalEmployees = employees.length;
+
+  const departments = new Set(employees.map(emp => emp.department));
+  const totalDepartments = departments.size;
+
+  const totalBasicSalary = employees.reduce((sum, emp) => sum + emp.salary, 0);
+
+  const totalTax = employees.reduce((sum, emp) => sum + emp.salary * 0.12, 0);
+
+  const totalNetSalary = totalBasicSalary - totalTax;
+
+  const avgSalary = totalEmployees === 0 ? 0 : totalBasicSalary / totalEmployees;
+
+  res.render("index", {
+    employees,
+    totalEmployees,
+    totalDepartments,
+    totalBasicSalary,
+    totalTax,
+    totalNetSalary,
+    avgSalary,
+    search
+  });
 });
+
 
 app.get("/add", (req, res) => {
   res.render("add");
